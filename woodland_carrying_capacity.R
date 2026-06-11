@@ -2,6 +2,7 @@
 
 ###############################################################################
 # Woodland chicken carrying-capacity model
+# Woodland chicken carrying-capacity model
 # WAP Just Transition project 2024
 # There isn't a forage-only system available, so think is to think-with Brodoclea calculations for Chickens
 #
@@ -160,15 +161,6 @@ for (nm in names(sens)) {
 cat("-----------------------------------------------------\n")
 
 
-
-
-
-
-
-
-
-
-
 ## ===========================================================================
 ## 6. FINAL REPORT
 ## ===========================================================================
@@ -179,7 +171,7 @@ cat("=====================================================\n")
 
 cat("\n")
 cat(strwrap(paste(
-  "Note: all supply-side parameters (D_t, D_p, A_hab, A_breed, eps) are mathematically equal in leverage because they multiply together in the numerator. Where one dominates in your results, it is because that parameter has the most room left for proportional improvement given its current value."
+  "Note: all supply-side parameters (D_t, D_p, A_hab, A_breed, eps) are mathematically equal in leverage because they multiply together in the numerator. Where one dominates in your results, it is because that parameter has the most room left for proportional improvement given its current value. This allows for a basic analysis, generated below."
 ), width = 53, prefix = " ", initial = " "), sep = "\n")
 
 if (top_lever %in% c("D_t", "D_p")) {
@@ -193,7 +185,7 @@ if (top_lever %in% c("D_t", "D_p")) {
   cat(strwrap(paste(
     "Accessibility is your binding constraint. Focus on making more of the woodland",
     "physically reachable by birds (A_hab), or select a breed with stronger foraging",
-    "instincts (A_breed). These are management and genetics decisions, not planting ones."
+    "instincts (A_breed)."
   ), width = 53, prefix = " ", initial = " "), sep = "\n")
 } else if (top_lever == "eps") {
   cat(strwrap(paste(
