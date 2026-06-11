@@ -2,7 +2,6 @@
 
 ###############################################################################
 # Woodland chicken carrying-capacity model
-# Woodland chicken carrying-capacity model
 # WAP Just Transition project 2024
 # There isn't a forage-only system available, so think is to think-with Brodoclea calculations for Chickens
 #
@@ -159,5 +158,62 @@ for (nm in names(sens)) {
               nm, sens[nm], sens[nm] * hectares, hectares))
 }
 cat("-----------------------------------------------------\n")
+
+
+
+
+
+
+
+
+
+
+
+## ===========================================================================
+## 6. FINAL REPORT
+## ===========================================================================
+
+cat("\n=====================================================\n")
+cat(" RECOMMENDATIONS\n")
+cat("=====================================================\n")
+
+cat("\n")
+cat(strwrap(paste(
+  "Note: all supply-side parameters (D_t, D_p, A_hab, A_breed, eps) are mathematically equal in leverage because they multiply together in the numerator. Where one dominates in your results, it is because that parameter has the most room left for proportional improvement given its current value."
+), width = 53, prefix = " ", initial = " "), sep = "\n")
+
+if (top_lever %in% c("D_t", "D_p")) {
+  cat(strwrap(paste(
+    "Tree species diversity and planting structure are your highest-return intervention.",
+    "Extending the forage season through species selection (D_t) and supporting",
+    "invertebrate populations via early and late flowering plants (D_p) will unlock",
+    "more carrying capacity than any other single change you can make."
+  ), width = 53, prefix = " ", initial = " "), sep = "\n")
+} else if (top_lever %in% c("A_hab", "A_breed")) {
+  cat(strwrap(paste(
+    "Accessibility is your binding constraint. Focus on making more of the woodland",
+    "physically reachable by birds (A_hab), or select a breed with stronger foraging",
+    "instincts (A_breed). These are management and genetics decisions, not planting ones."
+  ), width = 53, prefix = " ", initial = " "), sep = "\n")
+} else if (top_lever == "eps") {
+  cat(strwrap(paste(
+    "Digestibility is the dominant factor. The woodland may be producing adequate",
+    "energy but birds are not converting it efficiently. Focus on forage quality",
+    "over quantity, or consider a breed with better gut efficiency for woodland diets."
+  ), width = 53, prefix = " ", initial = " "), sep = "\n")
+} else if (top_lever == "W") {
+  cat(strwrap(paste(
+    "Body weight is the most sensitive parameter. Because heavier birds require more",
+    "maintenance energy, they directly reduce how many birds the woodland can support.",
+    "Selecting a lighter breed is the single most effective change you can make."
+  ), width = 53, prefix = " ", initial = " "), sep = "\n")
+} else if (top_lever == "P") {
+  cat(strwrap(paste(
+    "Laying rate is your dominant cost driver. High production output carries a",
+    "significant energy overhead that competes directly with stocking density.",
+    "A lower-production or dual-purpose breed would allow more birds on the same area."
+  ), width = 53, prefix = " ", initial = " "), sep = "\n")
+}
+
 
 cat(sprintf(" RECOMMENDED STOCKING RATE : %7.1f birds/ha\n", N_sustainable))
